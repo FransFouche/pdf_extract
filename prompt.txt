@@ -1,0 +1,135 @@
+You are a senior Python engineer. Build a complete, production-quality MVP that extracts item names and prices from PDF files and outputs them into a structured Excel file.
+
+## 🎯 Goal
+Create a Python app that:
+1. Accepts a PDF file as input
+2. Extracts item descriptions and prices
+3. Outputs a clean Excel (.xlsx) file with structured columns
+
+---
+
+## 🧱 Tech Stack
+- Python 3.11+
+- pdfplumber (primary PDF parsing)
+- PyMuPDF (fitz) as fallback parser
+- pandas (data handling)
+- openpyxl (Excel output)
+- regex (price extraction)
+- optional: Streamlit for UI
+
+---
+
+## 📁 Project Structure
+Create:
+
+/pdf_to_excel/
+│── main.py
+│── extractor/
+│   ├── pdf_reader.py
+│   ├── price_parser.py
+│── output/
+│   └── writer.py
+│── utils/
+│   └── cleaner.py
+│── requirements.txt
+│── README.md
+
+---
+
+## ⚙️ Functional Requirements
+
+### 1. PDF Reading (pdf_reader.py)
+- Use pdfplumber to extract:
+  - Tables if present
+  - Raw text if no tables found
+- Fallback to PyMuPDF if pdfplumber fails
+- Return structured raw data (list of rows or text lines)
+
+---
+
+### 2. Price Extraction (price_parser.py)
+- Identify prices using regex patterns like:
+  - R 123.45
+  - 123.45
+  - 1,234.56
+- Extract:
+  - item name (text before price)
+  - price (numeric)
+- Handle messy lines like:
+  "Milk 2L R23.99"
+  "Bread White 700g 18.50"
+
+Return structured list:
+[
+  {"item": "Milk 2L", "price": 23.99},
+  {"item": "Bread White 700g", "price": 18.50}
+]
+
+---
+
+### 3. Data Cleaning (cleaner.py)
+- Remove duplicates
+- Strip whitespace
+- Normalize price to float
+- Remove invalid rows
+
+---
+
+### 4. Excel Output (writer.py)
+- Use pandas + openpyxl
+- Output file: output/result.xlsx
+- Columns:
+  - Item Name
+  - Price
+- Auto-adjust column widths
+
+---
+
+### 5. Main Script (main.py)
+- Accept file path as input argument
+- Run pipeline:
+  PDF → Extract → Parse → Clean → Excel
+- Print progress logs
+
+---
+
+## 🧪 Bonus Features (Implement if possible)
+- Detect currency (R, $, €)
+- Handle multi-page PDFs
+- Confidence score per row
+- CLI usage:
+  python main.py input.pdf
+
+---
+
+## 🖥️ Optional UI (Streamlit)
+If adding UI:
+- Upload PDF
+- Button: "Extract Prices"
+- Download Excel file
+
+---
+
+## 📦 requirements.txt
+Include all dependencies
+
+---
+
+## 📘 README.md
+Include:
+- Setup instructions
+- How to run
+- Example input/output
+
+---
+
+## 🧠 Important Notes
+- Write clean, modular, production-ready code
+- Add comments where needed
+- Handle edge cases (empty PDFs, no prices found)
+- Ensure code runs immediately after install
+
+---
+
+## 🚀 Output
+Generate ALL files with full working code.

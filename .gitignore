@@ -1,0 +1,19 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.python-version
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated outputs
+pdf_to_excel/output/
+*.xlsx
+
+# Input PDFs (keep out of git; add manually if needed)
+*.pdf
+
