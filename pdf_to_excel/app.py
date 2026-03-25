@@ -73,7 +73,7 @@ if uploaded is not None:
         else:
             st.success(f"Extracted {len(records)} items.")
             xlsx_bytes = records_to_xlsx_bytes(records)
-            out_name = f\"{Path(uploaded.name).stem}.xlsx\"
+            out_name = f"{Path(uploaded.name).stem}.xlsx"
             st.download_button(
                 label="Download Excel",
                 data=xlsx_bytes,
